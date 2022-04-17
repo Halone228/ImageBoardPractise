@@ -11,5 +11,6 @@ import java.util.List;
 public interface PostsDAO extends JpaRepository<Posts,Long> {
     @Query("SELECT p FROM Posts p WHERE p.hashTags LIKE '%:hashtag%'")
     List<Posts> getConsistsHashTag(@Param("hashtag") String hashtag);
-
+    @Query("select p from Posts p ORDER BY p.creationDate")
+    List<Posts> findAllSortedByDate();
 }

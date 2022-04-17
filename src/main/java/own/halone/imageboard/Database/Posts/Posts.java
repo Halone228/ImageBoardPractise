@@ -1,5 +1,6 @@
 package own.halone.imageboard.Database.Posts;
 
+import own.halone.imageboard.Database.Comments.Comments;
 import own.halone.imageboard.Database.Images.Images;
 import own.halone.imageboard.Database.Users.Users;
 
@@ -25,7 +26,8 @@ public class Posts {
     }
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
-
+    @OneToMany
+    private List<Comments> comments;
     public long getId() {
         return id;
     }
