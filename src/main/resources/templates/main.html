@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Image Board</title>
+    <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
-
+    <header class="header">
+        <h1 class="Logo">ImageBoard</h1>
+        <p class="accinfo">{{ accinfo }}</p>
+    </header>
+    <div class="page stylize">
+        <div id="item" v-for="item in items">
+            <a :href="/posts/{{id}}">    
+                <img :src="/image/{{item.image.id}}" alt="">
+                <p class="title">
+                    {{ item.title }}
+                </p>
+                <p class="description">
+                    {{ item.description }}
+                </p>
+                <p class="hashtags">
+                    {{ item.hashtags }}
+                </p>
+                <a>
+                    <p class="username" :href="/user/{{item.owner.id}}">   
+                        {{ item.owner.username}}
+                    </p>
+                </a>
+            </a>
+        </div>
+    </div>
+    <footer>
+        someFooter
+    </footer>
+    <script src="../static/main.js"></script>
 </body>
 </html>

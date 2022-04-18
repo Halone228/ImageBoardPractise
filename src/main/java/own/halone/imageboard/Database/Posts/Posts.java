@@ -15,6 +15,7 @@ public class Posts {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String description;
+    private String title;
     private String hashTags;
     @ManyToOne
     private Users owner;
@@ -83,6 +84,23 @@ public class Posts {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
 
     @PrePersist
     void init(){
