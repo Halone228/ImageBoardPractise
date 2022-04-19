@@ -1,7 +1,8 @@
 package own.halone.imageboard.Database.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import own.halone.imageboard.Database.Posts.Posts;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -12,8 +13,6 @@ public class UserServiceImpl implements UserServiceInt{
     public Users getById(long id) {
         return usersDAO.getById(id);
     }
-
-    @Override
     public List<Users> getAll() {
         return usersDAO.findAll();
     }

@@ -1,6 +1,7 @@
 package own.halone.imageboard.Database.Images;
 
 import own.halone.imageboard.Database.Posts.Posts;
+
 import javax.persistence.*;
 
 @Entity

@@ -22,6 +22,6 @@ public class PostsServiceImpl implements PostsServiceInt{
     }
     @Override
     public List<Posts> getByPage(Pageable page) {
-        return paginRepository.findAll(page);
+        return paginRepository.findAll(page).toList();
     }
 }

@@ -1,5 +1,8 @@
 package own.halone.imageboard.Database.Users;
 
+import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.Nullable;
 import own.halone.imageboard.Database.Posts.Posts;
 
 import javax.persistence.*;
@@ -11,8 +14,11 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false,unique = true)
     private String username;
+    @Column(nullable = false,unique = true)
     private String email;
     private ROLES role;
     @OneToMany
@@ -22,6 +28,7 @@ public class Users {
                 joinColumns = @JoinColumn(name="user_id"),
                 inverseJoinColumns = @JoinColumn(name="post_id"))
     private List<Posts> likedPosts;
+    @NotNull
     private boolean isEnabled;
 
     public boolean isEnabled() {
@@ -92,5 +99,17 @@ public class Users {
     }
     public void addPost(Posts post){
         this.ownPosts.add(post);
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                ", isEnabled=" + isEnabled +
+                '}';
     }
 }

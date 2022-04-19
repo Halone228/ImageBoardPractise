@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Board</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="Logo">ImageBoard</h1>
+        <a th:text="${isAuth}? ${user.getUsername()}:'Log in'"
+           th:href="${isAuth}? '/account/'+ ${user.getUsername()} : '/login'"></a>
+        <a th:href="@{/logout}">Log out</a>
+    </header>
+    <div class="page stylize">
+        <div id="item" th:each="item : ${items}">
+            <a :href="/posts/{{id}}">    
+                <img :src="/image/{{item.image.id}}" alt="">
+                <p class="title" th:text="${item.title}">
+                </p>
+                <p class="description" th:text="${item.description}">
+                </p>
+                <p class="hashtags" th:text="${item.hashtags}">
+                </p>
+                <a>
+                    <p class="username" th:href="@{/user/{urlid}(urlid=${item.owner.id})}" th:text="${item.owner.username}">
+                    </p>
+                </a>
+            </a>
+        </div>
+    </div>
+    <footer>
+        someFooter
+    </footer>
+</body>
+</html>
